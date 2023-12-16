@@ -1,31 +1,26 @@
 package org.example;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Objects;
 
 @Entity
-@Table(name = "CD")
 public class CD {
-
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @Id
+    @Column(name = "id")
+    private int id;
+    @Basic
     @Column(name = "CD_NAME")
     private String cdName;
-
+    @Basic
     @Column(name = "BRAND_NAME")
-    private String bandName;
+    private String brandName;
 
-    // Getters and setters
-
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -37,12 +32,24 @@ public class CD {
         this.cdName = cdName;
     }
 
-    public String getBandName() {
-        return bandName;
+    public String getBrandName() {
+        return brandName;
     }
 
-    public void setBandName(String bandName) {
-        this.bandName = bandName;
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CD cd = (CD) o;
+        return id == cd.id && Objects.equals(cdName, cd.cdName) && Objects.equals(brandName, cd.brandName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, cdName, brandName);
     }
 }
-

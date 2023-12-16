@@ -30,19 +30,19 @@ public class JpaApp {
             // Populate the table
             org.example.CD cd1 = new org.example.CD();
             cd1.setCdName("5150_1");
-            cd1.setBandName("Van Halen");
+            cd1.setBrandName("Van Halen");
 
             org.example.CD cd2 = new org.example.CD();
             cd2.setCdName("1984_1");
-            cd2.setBandName("Van Halen");
+            cd2.setBrandName("Van Halen");
 
             org.example.CD cd3 = new org.example.CD();
             cd3.setCdName("Back in Black_1");
-            cd3.setBandName("AC/DC");
+            cd3.setBrandName("AC/DC");
 
             org.example.CD cd4 = new org.example.CD();
             cd4.setCdName("Full Bluntal Nugity_1");
-            cd4.setBandName("Ted Nugent");
+            cd4.setBrandName("Ted Nugent");
 
             entityManager.persist(cd1);
             entityManager.persist(cd2);
@@ -54,7 +54,7 @@ public class JpaApp {
             // View the table
             List<org.example.CD> cds = entityManager.createQuery("SELECT c FROM CD c", org.example.CD.class).getResultList();
             for (org.example.CD cd : cds) {
-                System.out.println(cd.getCdName() + "(" + cd.getId() + "): " + cd.getCdName() + cd.getBandName());
+                System.out.println(cd.getCdName() + "(" + cd.getId() + "): " + cd.getCdName() + cd.getBrandName());
             }
 
         } catch (Exception e) {
